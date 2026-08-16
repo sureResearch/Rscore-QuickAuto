@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it and the upstream CorSeg-CineSAX work."
+title: "Rscore QuickAuto: automated SAX cine CMR radiomics and Rscore_z calculation"
+type: software
+authors:
+  - family-names: Shi
+    given-names: Shuo
+    affiliation: Beijing Anzhen Hospital
+version: 1.0.1
+date-released: 2026-08-16
+license: MIT
+keywords:
+  - cardiac magnetic resonance
+  - cine MRI
+  - radiomics
+  - hypertrophic cardiomyopathy
+  - segmentation
+  - Rscore

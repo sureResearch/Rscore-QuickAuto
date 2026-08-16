@@ -1,0 +1,24 @@
+CorSeg-CineSAX upstream notice
+==============================
+
+Upstream project:
+https://github.com/RunhaoXu2003/CorSeg
+
+Associated work:
+Runhao Xu, Siyuan Jiang, Yujia Zhai, and Yucheng Chen.
+CorSeg-CineSAX: An Open-Source Deep Learning Framework for Fully Automatic
+Segmentation of Short-Axis Cine Cardiac MRI Across Multiple Cardiac Diseases.
+DOI: https://doi.org/10.64898/2026.04.01.26349955
+
+The upstream README states that the CorSeg project is licensed under the MIT
+License. As checked on 2026-08-16, a standalone upstream LICENSE file and its
+exact copyright notice were not present in the repository file list, and
+separate author confirmation had not been received.
+
+This file is therefore an attribution and licensing-status notice, not a
+replacement or reconstruction of an absent upstream license file. If an
+authoritative upstream LICENSE file becomes available, preserve it verbatim and
+update THIRD_PARTY_NOTICES.md.
+
+The pretrained CorSeg model checkpoint is not included in Rscore QuickAuto.
+

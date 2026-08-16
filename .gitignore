@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Model checkpoints: download from the official upstream source
+*.pth
+*.pt
+weights/*
+!weights/README.md
+
+# Patient-level medical images and outputs
+*.dcm
+*.dicom
+*.nii
+*.nii.gz
+input/*
+!input/README.md
+output/*
+!output/README.md
+*_Rscore_output/
+*_Rscore_batch_output/
+
+# Patient-level tables, logs, and temporary files
+*.xlsx
+*.xls
+*.log
+*.tmp
+
+# Operating systems and editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
