@@ -1,7 +1,7 @@
 # Locked model audit files
 
 `Final_model_coefficients.csv` is a human-readable audit copy of the locked
-23-feature `Rscore-CMRRI-v1` model.
+21-feature `Rscore-CMRPI-v2` model.
 
 The executable model parameters are embedded in `rscore_quickauto.py`. Automated
 tests require the CSV and the embedded constants to agree exactly, preventing
