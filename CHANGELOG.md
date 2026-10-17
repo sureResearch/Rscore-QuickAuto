@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.0 — 2026-10-17
+
+- Updated to the 21-feature model fitted in 895 development patients.
+- Replaced coefficients, intercept, feature scaling and OOF score scaling.
+- Renamed the model target to CMRPI_z and model ID to Rscore-CMRPI-v2.
+- Updated the coefficient audit CSV, model checks and documentation.
+- Kept radiomics preprocessing and segmentation unchanged.
+
+
 ## 1.0.1 — 2026-08-16
 
 - Corrected an overly strict cross-slice absolute `TriggerTime` equality check

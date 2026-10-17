@@ -4,7 +4,7 @@ Rscore QuickAuto is a research pipeline that converts a conventional short-axis
 (SAX) cine cardiac MRI DICOM series into a locked radiomics score (`Rscore_z`).
 It performs DICOM cine reconstruction, CorSeg-CineSAX segmentation, end-diastolic
 phase selection, myocardial radiomics extraction, and calculation of the locked
-23-feature Rscore.
+21-feature Rscore.
 
 > **Research use only.** This software is not a medical device and must not be
 > used for clinical diagnosis, treatment planning, or unsupervised clinical
@@ -13,9 +13,9 @@ phase selection, myocardial radiomics extraction, and calculation of the locked
 ## What is included
 
 - One executable script: `rscore_quickauto.py`
-- Locked model: `Rscore-CMRRI-v1`
+- Locked model: `Rscore-CMRPI-v2`
 - Primary program output: `Rscore_z`
-- Model-development target: `CMRRI_z`
+- Model-development target: `CMRPI_z`
 - Locked radiomics pipeline: `CineSAX-Rad-v1`
 - Single-case, batch, resume, and environment-check commands
 - Formula and pipeline self-checks
@@ -204,16 +204,16 @@ package versions and SHA-256 identifiers for reproducibility.
 
 ## Locked model definition
 
-The elastic-net model was developed in 610 A-center participants.
+The elastic-net model was developed in 895 A-center participants.
 
-- Training target: `CMRRI_z`
+- Training target: `CMRPI_z`
 - Primary exported outcome: `Rscore_z`
-- Nonzero radiomics features: 23
-- Selected alpha: 0.6
-- Selected lambda: 0.0300311770330127
-- Selection rule: global minimum inner-CV MSE
-- A-center OOF raw Rscore mean: 0.000397984875998731
-- A-center OOF raw Rscore SD: 0.629442418702308
+- Nonzero radiomics features: 21
+- Selected alpha: 0.9
+- Selected lambda: 0.0207813528295157
+- Selection rule: global 1-SE sparse rule across the alpha-lambda grid
+- A-center OOF raw Rscore mean: 0.000183954801313518
+- A-center OOF raw Rscore SD: 0.585742962213757
 
 For feature value `x_j`, training mean `mu_j`, training SD `sigma_j`, and locked
 coefficient `beta_j`:
@@ -224,7 +224,7 @@ Rscore_z   = (raw_Rscore - OOF_mean) / OOF_SD
 ```
 
 The model-development target and exported score should not be conflated:
-`CMRRI_z` is the training target, whereas `Rscore_z` is the standardized
+`CMRPI_z` is the training target, whereas `Rscore_z` is the standardized
 radiomics prediction used as the primary program output.
 
 ## Locked radiomics method
@@ -280,3 +280,16 @@ Across Multiple Cardiac Diseases*. 2026. DOI:
 Original contributions by Shuo Shi are released under the MIT License. Adapted
 CorSeg portions and model weights remain subject to the upstream project's terms.
 See `LICENSE`, `THIRD_PARTY_NOTICES.md`, and `licenses/CorSeg-NOTICE.txt`.
+
+## Model update in 1.1.0
+
+The 21-feature model was fitted to CMRPI_z in 895 development patients.
+The source analysis workbook uses the legacy label CMRRI_z for this target.
+All feature means and sample SDs are fixed from the development cohort.
+Final-model predictions are standardized using the development OOF raw-score
+mean and SD; do not restandardize scores within a new cohort.
+For development-data verification, compare final-model predictions with
+apparent_raw_Rscore and apparent_Rscore_z, not patient-level OOF predictions.
+The DICOM reconstruction, segmentation, and radiomics preprocessing are unchanged.
+Existing scores from earlier software versions must be recalculated from features
+or images; they cannot be converted by rescaling the old score alone.

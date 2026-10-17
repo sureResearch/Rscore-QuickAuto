@@ -36,9 +36,9 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 
 PROGRAM_NAME = "Rscore QuickAuto"
-PROGRAM_VERSION = "1.0.1"
-MODEL_ID = "Rscore-CMRRI-v1"
-MODEL_TARGET = "CMRRI_z"
+PROGRAM_VERSION = "1.1.0"
+MODEL_ID = "Rscore-CMRPI-v2"
+MODEL_TARGET = "CMRPI_z"
 PRIMARY_OUTCOME = "Rscore_z"
 PIPELINE_ID = "CineSAX-Rad-v1"
 
@@ -49,131 +49,37 @@ DEFAULT_WEIGHT = (
     / "ModelWeight-CorSeg-CineSAX_MedNextL.pth"
 )
 
-# Locked model fitted in the A-center development cohort (N=610).
+# Locked model fitted in the A-center development cohort (N=895).
 # Each entry is: feature_name: (coefficient, training_mean, training_SD).
-INTERCEPT = -6.12521947480383e-17
-OOF_RSCORE_MEAN = 0.000397984875998731
-OOF_RSCORE_SD = 0.629442418702308
-SELECTED_ALPHA = 0.6
-SELECTED_LAMBDA = 0.0300311770330127
-TUNING_RULE = "global_minimum_MSE"
+INTERCEPT = -0.00137586890955412
+OOF_RSCORE_MEAN = 0.000183954801313518
+OOF_RSCORE_SD = 0.585742962213757
+SELECTED_ALPHA = 0.9
+SELECTED_LAMBDA = 0.0207813528295157
+TUNING_RULE = 'global_1SE_sparse_rule'
 
 FEATURE_SPECS: Dict[str, Tuple[float, float, float]] = {
-    "original_shape_Compactness2": (
-        0.196518898648995,
-        0.0371269637728555,
-        0.0149293261944881,
-    ),
-    "original_shape_Maximum2DDiameterSlice": (
-        0.231545534510617,
-        80.1961024578862,
-        8.38394566419164,
-    ),
-    "original_glcm_Autocorrelation": (
-        -0.00173108337031287,
-        588.051670909677,
-        172.493532350894,
-    ),
-    "original_glcm_ClusterShade": (
-        0.0165335248649646,
-        2299.42143471462,
-        3031.07728443994,
-    ),
-    "original_glcm_Correlation": (
-        0.115897353697732,
-        0.8853173021163,
-        0.0457880370122781,
-    ),
-    "original_glcm_InverseVariance": (
-        -0.126986163165913,
-        0.359628625082663,
-        0.0354709444892982,
-    ),
-    "original_glszm_GrayLevelNonUniformity": (
-        0.00199862384032442,
-        220.122820116924,
-        96.4713924944949,
-    ),
-    "original_glszm_LargeAreaLowGrayLevelEmphasis": (
-        -0.00185502219811432,
-        0.778035895826026,
-        1.11521610951685,
-    ),
-    "log-sigma-1-0-mm-3D_firstorder_90Percentile": (
-        -0.0776442368715164,
-        18.8932198069526,
-        4.86659223629072,
-    ),
-    "log-sigma-1-0-mm-3D_firstorder_Kurtosis": (
-        0.0373628347790785,
-        6.53309639175009,
-        1.7199921759456,
-    ),
-    "log-sigma-1-0-mm-3D_glcm_InverseVariance": (
-        0.0161070665136766,
-        0.413699794550222,
-        0.0245435334204463,
-    ),
-    "log-sigma-1-0-mm-3D_gldm_DependenceEntropy": (
-        -0.0363688854893148,
-        5.79292121347163,
-        0.145484231431054,
-    ),
-    "log-sigma-2-0-mm-3D_firstorder_Skewness": (
-        0.0475034811846754,
-        0.249834364092006,
-        0.33480661329703,
-    ),
-    "log-sigma-2-0-mm-3D_glszm_GrayLevelNonUniformityNormalized": (
-        -0.12810179877559,
-        0.0630799943965918,
-        0.0059800039912888,
-    ),
-    "log-sigma-2-0-mm-3D_gldm_DependenceEntropy": (
-        0.0806471919720448,
-        6.52604609573996,
-        0.107803448935442,
-    ),
-    "log-sigma-2-0-mm-3D_gldm_DependenceVariance": (
-        0.0555215091093061,
-        3.37529031402775,
-        0.890760288802934,
-    ),
-    "log-sigma-3-0-mm-3D_firstorder_InterquartileRange": (
-        -0.0349252210258058,
-        30.28571265029,
-        5.22623758506106,
-    ),
-    "log-sigma-3-0-mm-3D_firstorder_Skewness": (
-        0.0340632267551152,
-        0.0233941227783107,
-        0.298259491287254,
-    ),
-    "log-sigma-3-0-mm-3D_firstorder_Kurtosis": (
-        0.0498230336354101,
-        3.67214369973822,
-        0.65736045649235,
-    ),
-    "log-sigma-3-0-mm-3D_glszm_LargeAreaHighGrayLevelEmphasis": (
-        -0.00968484373085998,
-        35304.3545997395,
-        33475.7589365849,
-    ),
-    "log-sigma-3-0-mm-3D_glszm_ZoneEntropy": (
-        0.0806283519633917,
-        6.79707555592151,
-        0.238868837306891,
-    ),
-    "log-sigma-3-0-mm-3D_gldm_DependenceEntropy": (
-        -0.139343439126078,
-        6.91293094079228,
-        0.128894364168613,
-    ),
-    "log-sigma-3-0-mm-3D_ngtdm_Contrast": (
-        -0.0880349607233836,
-        0.0202699167832803,
-        0.00923356357248006,
-    ),
+    'original_shape_Compactness2': (0.201542062718947, 0.037117731562211, 0.0142808068755918),
+    'original_shape_Maximum2DDiameterSlice': (0.233499305889655, 81.4398402967607, 8.53289523213749),
+    'original_shape_MajorAxisLength': (-0.0214275297234991, 90.2208151671533, 10.613673637448),
+    'original_glcm_ClusterShade': (0.000212077771246787, 2896.54666479066, 3278.95133778661),
+    'original_glcm_Correlation': (0.116527406322042, 0.889738559607736, 0.0450101725904032),
+    'original_glcm_InverseVariance': (-0.0634421518230312, 0.364457752953377, 0.0345551134632627),
+    'original_glrlm_RunEntropy': (0.0317949851257641, 5.89366465471131, 0.174980566495439),
+    'log-sigma-1-0-mm-3D_firstorder_90Percentile': (-0.0749084521188119, 18.3770850033467, 4.66701716176598),
+    'log-sigma-1-0-mm-3D_firstorder_Kurtosis': (0.0148668743041834, 6.87240724224756, 1.88049625346853),
+    'log-sigma-1-0-mm-3D_gldm_DependenceEntropy': (-0.0598459416494141, 5.77661098836221, 0.158553235763999),
+    'log-sigma-2-0-mm-3D_firstorder_Skewness': (0.0973891872722202, 0.121212799770414, 0.407624864741092),
+    'log-sigma-2-0-mm-3D_glszm_GrayLevelNonUniformityNormalized': (-0.178728693462313, 0.063281067241513, 0.00607829390693748),
+    'log-sigma-2-0-mm-3D_glszm_ZoneEntropy': (0.0123090676150253, 6.52407159474757, 0.16422413938139),
+    'log-sigma-2-0-mm-3D_gldm_DependenceEntropy': (0.0596537482535824, 6.52823722976104, 0.116551356306922),
+    'log-sigma-2-0-mm-3D_gldm_DependenceVariance': (0.0863538560657024, 3.5211700338683, 0.882163770431474),
+    'log-sigma-3-0-mm-3D_firstorder_Mean': (0.00593885181426955, 17.2096978634448, 7.44413864057075),
+    'log-sigma-3-0-mm-3D_firstorder_Skewness': (0.0168012466116194, -0.069971441081727, 0.347097436289104),
+    'log-sigma-3-0-mm-3D_firstorder_Kurtosis': (0.00892988243249883, 3.89568041369529, 0.776149020856094),
+    'log-sigma-3-0-mm-3D_glszm_ZoneEntropy': (0.0525610993586222, 6.82270593980894, 0.231458286606252),
+    'log-sigma-3-0-mm-3D_gldm_DependenceEntropy': (-0.150534759930598, 6.916466943014, 0.129833557480175),
+    'log-sigma-3-0-mm-3D_ngtdm_Contrast': (-0.111040695347582, 0.0186999525604795, 0.00864703521137454),
 }
 
 TARGET_SPACING = [1.0, 1.0, 8.0]
@@ -301,9 +207,9 @@ def file_sha256(path: Path, chunk_size: int = 1024 * 1024) -> str:
 
 
 def validate_locked_model() -> None:
-    if len(FEATURE_SPECS) != 23:
+    if len(FEATURE_SPECS) != 21:
         raise RuntimeError(
-            f"Locked model must contain 23 features; found {len(FEATURE_SPECS)}."
+            f"Locked model must contain 21 features; found {len(FEATURE_SPECS)}."
         )
     for name, (_, mean, sd) in FEATURE_SPECS.items():
         if not name or not math.isfinite(mean) or not math.isfinite(sd) or sd <= 0:
