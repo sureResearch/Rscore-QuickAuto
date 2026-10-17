@@ -15,7 +15,7 @@ class AuditCsvTests(unittest.TestCase):
         )
         with csv_path.open(newline="", encoding="utf-8-sig") as handle:
             rows = list(csv.DictReader(handle))
-        self.assertEqual(len(rows), 24)
+        self.assertEqual(len(rows), 22)
         intercept_rows = [
             row for row in rows if row["Term"] == "(Intercept)"
         ]

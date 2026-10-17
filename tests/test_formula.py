@@ -10,11 +10,11 @@ def mean_vector():
 
 class LockedFormulaTests(unittest.TestCase):
     def test_locked_model_metadata(self):
-        self.assertEqual(rq.MODEL_TARGET, "CMRRI_z")
+        self.assertEqual(rq.MODEL_TARGET, "CMRPI_z")
         self.assertEqual(rq.PRIMARY_OUTCOME, "Rscore_z")
-        self.assertEqual(rq.MODEL_ID, "Rscore-CMRRI-v1")
+        self.assertEqual(rq.MODEL_ID, "Rscore-CMRPI-v2")
         self.assertEqual(rq.PIPELINE_ID, "CineSAX-Rad-v1")
-        self.assertEqual(len(rq.FEATURE_SPECS), 23)
+        self.assertEqual(len(rq.FEATURE_SPECS), 21)
         rq.validate_locked_model()
 
     def test_training_mean_vector_returns_intercept(self):
